@@ -1,14 +1,14 @@
 export const convertUnixTimestampToDate = (unixTimestamp) => {
   let date = new Date(unixTimestamp);
-  let dateObject = {
+  /*let dateObject = {
     year: date.getFullYear(),
     month: date.getMonth(),
     date: date.getDate(),
     hour: date.getHours(),
     minutes: date.getMinutes(),
     seconds: date.getSeconds(),
-  };
-  return dateObject;
+  };*/
+  return date;
 };
 
 /**
@@ -39,18 +39,18 @@ export const getYesterday = () => {
   );
 };
 
-export const convertDateObjectToString = (dateObject) => {
-  let dateString =
-    dateObject.year +
+export const convertDateToString = (date) => {
+  let dateString = date.toISOString().substring(0, 10)
+    /*date.getFullYear() +
     "-" +
-    dateObject.month +
+    date.getMonth() +
     "-" +
-    dateObject.date +
+    date.getDate() +
     " " +
-    dateObject.hour +
+    date.getHours() +
     ":" +
-    dateObject.minutes +
+    date.getMinutes() +
     ":" +
-    dateObject.seconds;
+    date.getSeconds();*/
   return dateString;
 };

@@ -70,7 +70,7 @@ function App() {
         )}
       </div>
       <div>
-        <BearishDays priceData={priceData} />
+        <BearishDays priceData={priceData} startDate={startDate} endDate={endDate} />
       </div>
     </main>
   );
