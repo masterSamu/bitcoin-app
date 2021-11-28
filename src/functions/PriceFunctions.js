@@ -9,7 +9,7 @@ function selectMethod(array, dates) {
   let decreaseDaysInRow = [];
 
   if (array.length === countOfDays) {
-    decreaseDaysInRow = getBearishDaysForLongerThan90DaysPeriod(array);
+    decreaseDaysInRow = getBearishDaysForShorterThan90DaysPeriod(array);
   } else {
     decreaseDaysInRow = getBearishDaysForShorterThan90DaysPeriod(array);
   }
@@ -22,10 +22,11 @@ function getBearishDaysForLongerThan90DaysPeriod(array) {
   let price, date;
   let previousPrice = 0;
 
-  array.forEach((item) => {
+  array.forEach((item,index) => {
     date = DateFunctions.convertUnixTimestampToDate(item[0]);
     price = item[1];
     const priceIsDecreasing = price < previousPrice;
+
 
     if (priceIsDecreasing) {
       tempDaysInRow.push({
@@ -44,18 +45,22 @@ function getBearishDaysForLongerThan90DaysPeriod(array) {
   return decreaseDaysInRow;
 }
 
+function hasDecreasingPrice(price, previousPrice) {
+  return price < previousPrice;
+}
+// Viimenen päivä ei tule mukaan!!!
 function getBearishDaysForShorterThan90DaysPeriod(array) {
   let daysInRow = [];
   let tempDaysInRow = [];
   let date, price;
   let previousDate = new Date("1970-01-01");
-  let previousPrice = 0;
+  let previousPrice = array[0][1] +1;
 
-  array.forEach((item) => {
+  array.forEach((item, index) => {
     date = DateFunctions.convertUnixTimestampToDate(item[0]);
     price = item[1];
 
-    const isNotSameDate = date.getDate() !== previousDate.getDate();
+    const isNotSameDate = date.getUTCDate() !== previousDate.getUTCDate();
     const priceIsDecreasing = price < previousPrice;
 
     if (isNotSameDate) {
@@ -68,9 +73,7 @@ function getBearishDaysForShorterThan90DaysPeriod(array) {
             isNotSameDate +
             " , " +
             price +
-            " < " +
-            previousPrice +
-            " , " +
+           " , " +
             priceIsDecreasing
         );
         tempDaysInRow.push({
