@@ -2,29 +2,25 @@ import React, { useState, useEffect } from "react";
 import * as priceFunctions from "../functions/PriceFunctions";
 
 export default function BearishDays(props) {
-  const [bearishDays, setBearishDays] = useState([]);
+  const priceData = props.priceData;
+  const startDate = props.startDate;
+  const endDate = props.endDate;
+  const [decreasingDatesData, setDecreasingDatesData] = useState([]);
 
   useEffect(() => {
     console.log("bearish: ");
-    console.log(bearishDays);
-  }, [bearishDays]);
+    console.log(decreasingDatesData);
+  }, [decreasingDatesData]);
 
-  const getLongestBearishDays = () => {
-    //console.log(props.priceData)
-    //const array = priceFunctions.getDecreasingDays(props.priceData);
-    const days = priceFunctions.getDecreasedDaysInRow(props.priceData, {
-      startDate: props.startDate,
-      endDate: props.endDate,
-    });
-    //console.log(days)
-
-    setBearishDays(days);
+  const filterDecresingDatesData = () => {
+    const filteredData = priceFunctions.getDecreasedDatesInRow(priceData);
+    setDecreasingDatesData(filteredData);
   };
 
   return (
     <div>
-      <button onClick={getLongestBearishDays}>Bearish</button>
-      <p>Bearish days in row: {bearishDays.length}</p>
+      <button onClick={filterDecresingDatesData}>Bearish</button>
+      <p>Bearish days in row: {decreasingDatesData.length}</p>
     </div>
   );
 }

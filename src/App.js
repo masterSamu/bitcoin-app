@@ -4,8 +4,8 @@ import BearishDays from "./components/BearishDays";
 import * as DateFunctions from "./functions/DateFunctions";
 
 function App() {
-  const [startDate, setStartDate] = useState(DateFunctions.getToday);
-  const [endDate, setEndDate] = useState(DateFunctions.getYesterday);
+  const [startDate, setStartDate] = useState(DateFunctions.getYesterday());
+  const [endDate, setEndDate] = useState(DateFunctions.getToday());
   const [daysPrice, setDaysPrice] = useState(0);
   const [downloadingData, setDownloadingData] = useState(false);
   const [downloadError, setDownloadError] = useState(false);
@@ -22,9 +22,10 @@ function App() {
 
   function downlaodCryptoData() {
     let fromDate = DateFunctions.convertDateToUnixTimestamp(startDate);
-    let toDate = DateFunctions.convertDateToUnixTimestamp(endDate);
+    let toDate = DateFunctions.convertDateToUnixTimestamp(endDate) + 3600; //3600 = 1hour
     let currency = "eur";
     let url = `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=${currency}&from=${fromDate}&to=${toDate}`;
+    
     const axios = require("axios");
     setDownloadingData(true);
     axios
@@ -70,7 +71,11 @@ function App() {
         )}
       </div>
       <div>
-        <BearishDays priceData={priceData} startDate={startDate} endDate={endDate} />
+        <BearishDays
+          priceData={priceData}
+          startDate={startDate}
+          endDate={endDate}
+        />
       </div>
     </main>
   );
