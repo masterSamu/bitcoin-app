@@ -56,7 +56,9 @@ export default function BuyingTime(props) {
 
     return (
         <div>
+            <h3>Best buying date at range</h3>
             <p>{lowestPrice}, {buiyngDate}</p>
+            <h3>Best selling date at range</h3>
             <p>{highestPrice}, {sellingDate}</p>
         </div>
     )

@@ -35,9 +35,8 @@ export default function TradingVolumes(props) {
   };
   return (
     <div>
-      <button onClick={extractHighestVolume}>Get volumes</button>
-      <p>{date}</p>
-      <p>{volume} €</p>
+      <h2>Highest trading date</h2>
+      <p>{date} , {volume} €</p>
     </div>
   );
 }

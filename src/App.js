@@ -5,10 +5,14 @@ import TradingVolumes from "./components/TradingVolumes";
 import BuyingTime from "./components/BuyingTime";
 import * as DateFunctions from "./functions/DateFunctions";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 
 function App() {
   const [startDate, setStartDate] = useState(DateFunctions.getYesterday());
@@ -20,7 +24,7 @@ function App() {
   const [totalVolumes, setTotalVolumes] = useState([]);
 
   useEffect(() => {
-    downlaodCryptoData();
+    downlaodHistoricalData();
   }, []);
 
   const handleStartDateChange = (e) => {
@@ -31,7 +35,7 @@ function App() {
     setEndDate(e.target.value);
   };
 
-  function downlaodCryptoData() {
+  function downlaodHistoricalData() {
     let fromDate = DateFunctions.convertDateToUnixTimestamp(startDate);
     let toDate = DateFunctions.convertDateToUnixTimestamp(endDate) + 3600; //3600 = 1hour
     let currency = "eur";
@@ -51,49 +55,70 @@ function App() {
         setDownloadError(true);
       })
       .then(function () {
-        console.log("axios call finished.");
         setDownloadingData(false);
       });
   }
 
   return (
     <main>
-      <Container>
-        <Container>
-          <Form style={dateInputStyle}>
-            <Form.Control
-              type="date"
-              defaultValue={startDate}
-              onChange={handleStartDateChange}
-              min="1970-01-01"
-            />
-            <Form.Control
-              type="date"
-              defaultValue={endDate}
-              onChange={handleEndDateChange}
-              min="1970-01-01"
-            />
-          </Form>
-          {downloadingData ? <p>Loading..</p> : <p></p>}
+      <Container style={mainContainerStyle}>
+        <Form style={dateFormRowStyle}>
+          <Form.Control
+            type="date"
+            defaultValue={startDate}
+            onChange={handleStartDateChange}
+            min="1970-01-01"
+            style={dateInputStyle}
+          />
 
+          <Form.Control
+            type="date"
+            defaultValue={endDate}
+            onChange={handleEndDateChange}
+            min="1970-01-01"
+            style={dateInputStyle}
+          />
+
+          {downloadingData ? (
+            <Button variant="primary" disabled style={dateInputBtn}>
+              <Spinner
+                animation="border"
+                style={{ marginRight: 5, height: 20, width: 20 }}
+              ></Spinner>
+              Loading...
+            </Button>
+          ) : (
+            <Button
+              variant="primary"
+              onClick={downlaodHistoricalData}
+              style={dateInputBtn}
+            >
+              Refresh
+            </Button>
+          )}
+        </Form>
+        <Row>
           <p>Starting date: {startDate}</p>
           <p>End date: {endDate}</p>
-          <Button variant="primary" onClick={downlaodCryptoData}>Refresh data</Button>
           {downloadError ? (
             <p>Couldn't dowload the data, try again later.</p>
           ) : (
             <p></p>
           )}
-        </Container>
-        <Container>
+        </Row>
+        <Row>
           <BearishDays
             priceData={priceData}
             startDate={startDate}
             endDate={endDate}
           />
+        </Row>
+        <Row>
           <TradingVolumes totalVolumes={totalVolumes} />
+        </Row>
+        <Row>
           <BuyingTime priceData={priceData} />
-        </Container>
+        </Row>
       </Container>
     </main>
   );
@@ -101,8 +126,20 @@ function App() {
 
 export default App;
 
-const dateInputStyle = {
-  display: 'flex',
+const mainContainerStyle = {};
+
+const dateFormRowStyle = {
+  display: "flex",
   justfyContent: "space-between",
-  width: "50%"
-}
+};
+
+const dateInputStyle = {
+  width: "200px",
+  marginRight: 20,
+};
+
+const dateInputBtn = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+};

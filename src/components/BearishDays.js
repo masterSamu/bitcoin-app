@@ -8,8 +8,7 @@ export default function BearishDays(props) {
   const [decreasingDatesData, setDecreasingDatesData] = useState([]);
 
   useEffect(() => {
-    console.log("bearish: ");
-    console.log(decreasingDatesData);
+    filterDecresingDatesData();
   }, [decreasingDatesData]);
 
   const filterDecresingDatesData = () => {
@@ -19,7 +18,6 @@ export default function BearishDays(props) {
 
   return (
     <div>
-      <button onClick={filterDecresingDatesData}>Bearish</button>
       <p>Bearish days in row: {decreasingDatesData.length}</p>
     </div>
   );
