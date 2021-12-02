@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 import BearishDays from "./components/BearishDays";
+import TradingVolumes from "./components/TradingVolumes";
+import BuyingTime from "./components/BuyingTime";
 import * as DateFunctions from "./functions/DateFunctions";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 function App() {
   const [startDate, setStartDate] = useState(DateFunctions.getYesterday());
@@ -11,6 +18,10 @@ function App() {
   const [downloadError, setDownloadError] = useState(false);
   const [priceData, setPriceData] = useState([]);
   const [totalVolumes, setTotalVolumes] = useState([]);
+
+  useEffect(() => {
+    downlaodCryptoData();
+  }, []);
 
   const handleStartDateChange = (e) => {
     setStartDate(e.target.value);
@@ -25,7 +36,7 @@ function App() {
     let toDate = DateFunctions.convertDateToUnixTimestamp(endDate) + 3600; //3600 = 1hour
     let currency = "eur";
     let url = `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=${currency}&from=${fromDate}&to=${toDate}`;
-    
+
     const axios = require("axios");
     setDownloadingData(true);
     axios
@@ -47,38 +58,51 @@ function App() {
 
   return (
     <main>
-      <div>
-        <input
-          type="date"
-          defaultValue={startDate}
-          onChange={handleStartDateChange}
-        />
-        <input
-          type="date"
-          defaultValue={endDate}
-          onChange={handleEndDateChange}
-        />
+      <Container>
+        <Container>
+          <Form style={dateInputStyle}>
+            <Form.Control
+              type="date"
+              defaultValue={startDate}
+              onChange={handleStartDateChange}
+              min="1970-01-01"
+            />
+            <Form.Control
+              type="date"
+              defaultValue={endDate}
+              onChange={handleEndDateChange}
+              min="1970-01-01"
+            />
+          </Form>
+          {downloadingData ? <p>Loading..</p> : <p></p>}
 
-        {downloadingData ? <p>Loading..</p> : <p></p>}
-
-        <p>Starting date: {startDate}</p>
-        <p>End date: {endDate}</p>
-        <button onClick={downlaodCryptoData}>Download data</button>
-        {downloadError ? (
-          <p>Couldn't dowload the data, try again later.</p>
-        ) : (
-          <p></p>
-        )}
-      </div>
-      <div>
-        <BearishDays
-          priceData={priceData}
-          startDate={startDate}
-          endDate={endDate}
-        />
-      </div>
+          <p>Starting date: {startDate}</p>
+          <p>End date: {endDate}</p>
+          <Button variant="primary" onClick={downlaodCryptoData}>Refresh data</Button>
+          {downloadError ? (
+            <p>Couldn't dowload the data, try again later.</p>
+          ) : (
+            <p></p>
+          )}
+        </Container>
+        <Container>
+          <BearishDays
+            priceData={priceData}
+            startDate={startDate}
+            endDate={endDate}
+          />
+          <TradingVolumes totalVolumes={totalVolumes} />
+          <BuyingTime priceData={priceData} />
+        </Container>
+      </Container>
     </main>
   );
 }
 
 export default App;
+
+const dateInputStyle = {
+  display: 'flex',
+  justfyContent: "space-between",
+  width: "50%"
+}

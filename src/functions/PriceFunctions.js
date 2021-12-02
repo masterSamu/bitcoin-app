@@ -1,12 +1,18 @@
 import * as DateFunctions from "../functions/DateFunctions";
 
+/**
+ * Returns array of longest decreasing dates in row.
+ * @param {*} array 
+ * @returns  array
+ */
 export const getDecreasedDatesInRow = (array) => {
   if (array.length > 0) return filterDecreasingDatesInRow(array);
   else return [];
 }
 
 /**
- * Filters decreasing ("bearish") dates in row
+ * Extracts decreasing ("bearish") dates in row from array and return
+ * longest decreasing dates data.
  * @param {*} array 
  * @returns array 
  */
@@ -14,7 +20,7 @@ function filterDecreasingDatesInRow(array) {
   let datesInRow = [];
   let tempDatesInRow = [];
   let date, price, previousPrice;
-  let previousDate = new Date("1970-01-01");
+  let previousDate = new Date(0);
 
   if (array.length > 0) {
     previousPrice = array[0][1] +1; // increase first price item by 1
