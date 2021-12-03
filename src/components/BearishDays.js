@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as priceFunctions from "../functions/PriceFunctions";
+import SmallCard from "./SmallCard";
+import Container from 'react-bootstrap/Container';
 
 export default function BearishDays(props) {
   const priceData = props.priceData;
@@ -17,8 +19,12 @@ export default function BearishDays(props) {
   };
 
   return (
-    <div>
-      <p>Bearish days in row: {decreasingDatesData.length}</p>
-    </div>
+    <Container>
+      <SmallCard
+        title="Decreased dates in row"
+        value={decreasingDatesData.length}
+        icon={<i class="bi bi-graph-down-arrow" style={{ color: "#F90716" }}></i>}
+      />
+    </Container>
   );
 }

@@ -13,6 +13,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
+import Card from "react-bootstrap/Card";
 
 function App() {
   const [startDate, setStartDate] = useState(DateFunctions.getYesterday());
@@ -22,6 +23,7 @@ function App() {
   const [downloadError, setDownloadError] = useState(false);
   const [priceData, setPriceData] = useState([]);
   const [totalVolumes, setTotalVolumes] = useState([]);
+  const [currency, setCurrency] = useState("€");
 
   useEffect(() => {
     downlaodHistoricalData();
@@ -106,19 +108,17 @@ function App() {
             <p></p>
           )}
         </Row>
-        <Row>
+        <Container style={dataContainer}>
           <BearishDays
             priceData={priceData}
             startDate={startDate}
             endDate={endDate}
           />
-        </Row>
-        <Row>
-          <TradingVolumes totalVolumes={totalVolumes} />
-        </Row>
-        <Row>
-          <BuyingTime priceData={priceData} />
-        </Row>
+
+          <TradingVolumes totalVolumes={totalVolumes} currency={currency} />
+
+          <BuyingTime priceData={priceData} currency={currency} />
+        </Container>
       </Container>
     </main>
   );
@@ -143,3 +143,8 @@ const dateInputBtn = {
   justifyContent: "space-between",
   alignItems: "center",
 };
+
+const dataContainer = {
+  display: "flex",
+  justifyContent: "space-evenly"
+}
