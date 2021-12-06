@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import BearishDays from "./components/BearishDays";
-import TradingVolumes from "./components/TradingVolumes";
-import BuyingTime from "./components/BuyingTime";
 import * as DateFunctions from "./functions/DateFunctions";
 
 import "./App.css";
@@ -13,7 +10,8 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
-import Card from "react-bootstrap/Card";
+import DataCards from "./components/DataCards";
+import SelectedDatesCard from "./components/selectedDatesCard";
 
 function App() {
   const [startDate, setStartDate] = useState(DateFunctions.getYesterday());
@@ -100,24 +98,17 @@ function App() {
           )}
         </Form>
         <Row>
-          <p>Starting date: {startDate}</p>
-          <p>End date: {endDate}</p>
-          {downloadError ? (
-            <p>Couldn't dowload the data, try again later.</p>
-          ) : (
-            <p></p>
-          )}
+            <SelectedDatesCard startDate={startDate} endDate={endDate} downloadError={downloadError} />
+
         </Row>
         <Container style={dataContainer}>
-          <BearishDays
+          <DataCards
             priceData={priceData}
             startDate={startDate}
             endDate={endDate}
+            currency={currency}
+            totalVolumes={totalVolumes}
           />
-
-          <TradingVolumes totalVolumes={totalVolumes} currency={currency} />
-
-          <BuyingTime priceData={priceData} currency={currency} />
         </Container>
       </Container>
     </main>
@@ -126,7 +117,10 @@ function App() {
 
 export default App;
 
-const mainContainerStyle = {};
+const mainContainerStyle = {
+  padding: 0,
+  margin: 0
+};
 
 const dateFormRowStyle = {
   display: "flex",
@@ -146,5 +140,5 @@ const dateInputBtn = {
 
 const dataContainer = {
   display: "flex",
-  justifyContent: "space-evenly"
+  justifyContent: "space-evenly",
 }

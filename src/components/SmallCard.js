@@ -28,9 +28,10 @@ const cardTitleStyle = {
 };
 
 const cardStyle = {
-  width: "fit-content",
+  minWidth: "260px",
+  width: "max-content",
   padding: 0,
-  margin: 20,
+  marginBottom: 20
 };
 
 const cardHeaderStyle = {
