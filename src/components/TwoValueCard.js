@@ -15,7 +15,6 @@ export default function TwoValueCard(props) {
         <h2 style={cardTitleStyle}>{title}</h2>
       </Card.Header>
       <Card.Body>
-        <Card.Text style={{fontSize: "1.1rem"}}>
           <Container style={cardTextContainerStyle}>
             <span style={labelStyle}>
               Date:
@@ -28,7 +27,6 @@ export default function TwoValueCard(props) {
             </span>
             <span>{value} {currency}</span>
           </Container>
-        </Card.Text>
       </Card.Body>
     </Card>
   );
@@ -38,7 +36,8 @@ const cardStyle = {
   minWidth: "260px",
   width: "max-content",
   padding: 0,
-  marginBottom: 20,
+  marginBottom: 10,
+  marginTop: 10,
 };
 
 const cardTitleStyle = {
@@ -56,6 +55,7 @@ const cardTextContainerStyle = {
   justifyContent: "space-between",
   alignItems: "center",
   marginBottom: 5,
+  fontSize: "1.2rem"
 };
 
 const labelStyle = {

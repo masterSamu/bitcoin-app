@@ -41,7 +41,7 @@ export default function DataCards(props) {
           <SmallCard
             title="Decreased dates in row"
             value={decreasingDates.length}
-            icon={<i class="bi bi-graph-down-arrow" style={{ color: "#F90716" }}></i>}
+            icon={<i className="bi bi-graph-down-arrow" style={{ color: "#F90716" }}></i>}
           />
         </Col>
         <Col>

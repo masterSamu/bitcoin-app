@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import Container from 'react-bootstrap/Container';
 
 export default function SmallCard(props) {
   const title = props.title;
@@ -12,12 +13,12 @@ export default function SmallCard(props) {
         <h2 style={cardTitleStyle}>{title}</h2>
       </Card.Header>
       <Card.Body>
-        <Card.Text style={cardTextStyle}>
+        <Container style={cardTextStyle}>
           <span style={{ fontSize: "2.5rem" }}>{icon}</span>
           <span style={{ fontSize: "2.5rem", fontWeight: "bold" }}>
             {value}
           </span>
-        </Card.Text>
+        </Container>
       </Card.Body>
     </Card>
   );
@@ -31,7 +32,8 @@ const cardStyle = {
   minWidth: "260px",
   width: "max-content",
   padding: 0,
-  marginBottom: 20
+  marginBottom: 10,
+  marginTop: 10,
 };
 
 const cardHeaderStyle = {
