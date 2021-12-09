@@ -17,6 +17,9 @@ export default function SmallCard(props) {
           <span style={{ fontSize: "2.5rem" }}>{icon}</span>
           <span style={{ fontSize: "2.5rem", fontWeight: "bold" }}>
             {value}
+            <span style={{fontSize: "1.2rem", fontWeight: "normal", marginLeft: 2}}>
+              days
+            </span>
           </span>
         </Container>
       </Card.Body>
@@ -24,21 +27,21 @@ export default function SmallCard(props) {
   );
 }
 
-const cardTitleStyle = {
-  fontSize: "1.2rem",
-};
-
 const cardStyle = {
   minWidth: "260px",
-  width: "max-content",
+  maxWidth: "700px",
   padding: 0,
   marginBottom: 10,
   marginTop: 10,
 };
 
 const cardHeaderStyle = {
-  backgroundColor: "#FFE05D",
-  color: "#303030",
+  backgroundColor: "#3d3d3d",
+  color: "#FFFFFF",
+};
+
+const cardTitleStyle = {
+  fontSize: "1.2rem",
 };
 
 const cardTextStyle = {

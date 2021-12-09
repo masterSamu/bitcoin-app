@@ -34,7 +34,7 @@ export default function TwoValueCard(props) {
 
 const cardStyle = {
   minWidth: "260px",
-  width: "max-content",
+  maxWidth: "700px",
   padding: 0,
   marginBottom: 10,
   marginTop: 10,
@@ -45,8 +45,8 @@ const cardTitleStyle = {
 };
 
 const cardHeaderStyle = {
-  backgroundColor: "#FFE05D",
-  color: "#303030",
+  backgroundColor: "#3d3d3d",
+  color: "#FFFFFF",
 };
 
 const cardTextContainerStyle = {

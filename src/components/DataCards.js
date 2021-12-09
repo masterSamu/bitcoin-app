@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import * as priceFunctions from "../functions/PriceFunctions";
 import TwoValueCard from "./TwoValueCard";
 import SmallCard from "./SmallCard";
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 export default function DataCards(props) {
-  const downloadError = props.downloadError;
   const data = props.priceData;
   const volumeData = props.totalVolumes;
   const currency = props.currency;
@@ -32,19 +31,15 @@ export default function DataCards(props) {
   }, [volumeData])
 
   return (
-    <Container>
-      {downloadError ? (
-            <p>Couldn't dowload the data, try again later.</p>
-          ) : (
-      <Row>
-        <Col>
+      <Container>
+        <Row>
           <SmallCard
             title="Decreased dates in row"
             value={decreasingDates.length}
             icon={<i className="bi bi-graph-down-arrow" style={{ color: "#F90716" }}></i>}
           />
-        </Col>
-        <Col>
+        </Row>
+        <Row>
           <TwoValueCard
             title="Best buying date"
             date={lowestPrice.date}
@@ -52,8 +47,8 @@ export default function DataCards(props) {
             currency={currency}
             label2="Price"
           />
-        </Col>
-        <Col>
+        </Row>
+        <Row>
           <TwoValueCard
             title="Best selling date"
             date={highestPrice.date}
@@ -61,8 +56,8 @@ export default function DataCards(props) {
             currency={currency}
             label2="Price"
           />
-        </Col>
-        <Col>
+        </Row>
+        <Row>
           <TwoValueCard
             title="Highest trading volume"
             date={highestVolume.date}
@@ -70,9 +65,7 @@ export default function DataCards(props) {
             value={highestVolume.volume}
             label2="Volume"
           />
-        </Col>
-      </Row>
-      )}
-    </Container>
+        </Row>
+      </Container>
   );
 }
