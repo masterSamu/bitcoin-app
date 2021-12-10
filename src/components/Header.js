@@ -16,11 +16,11 @@ export default function Header() {
 
 
 const containerStyle = {
+    minWidth: "260px",
+    maxWidth: "700px",
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
-    minWidth: "260px",
-    maxWidth: "700px",
     marginBottom: 25,
     marginTop: 15,
 }

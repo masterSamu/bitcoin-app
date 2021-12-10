@@ -5,11 +5,7 @@ import * as DateFunctions from "./functions/DateFunctions";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Spinner from "react-bootstrap/Spinner";
+
 import DataCards from "./components/DataCards";
 import DateSelection from "./components/DateSelection";
 import ErrorCard from "./components/ErrorCard";
@@ -18,29 +14,31 @@ import Header from "./components/Header";
 
 function App() {
   const [cryptoCurrency, setCryptoCurrency] = useState(null);
-  const [startDate, setStartDate] = useState(DateFunctions.getDayBeforeYesterday());
+  const [startDate, setStartDate] = useState(
+    DateFunctions.getDayBeforeYesterday()
+  );
   const [endDate, setEndDate] = useState(DateFunctions.getYesterday());
   const [downloadingData, setDownloadingData] = useState(false);
   const [downloadError, setDownloadError] = useState(false);
   const [priceData, setPriceData] = useState([]);
   const [totalVolumes, setTotalVolumes] = useState([]);
-  const [currency, setCurrency] = useState("eur");
+  const [currency, setCurrency] = useState(null);
   const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
-    setCryptoCurrency("bitcoin")
-  }, [])
+    setCryptoCurrency("bitcoin");
+    setCurrency("eur");
+  }, []);
 
   const downlaodHistoricalData = () => {
     let fromDate = DateFunctions.convertDateToUnixTimestamp(startDate);
     let toDate = DateFunctions.convertDateToUnixTimestamp(endDate) + 3600; //3600 = 1hour
-
     let url = `https://api.coingecko.com/api/v3/coins/${cryptoCurrency}/market_chart/range?vs_currency=${currency}&from=${fromDate}&to=${toDate}`;
 
     const axios = require("axios");
     setDownloadingData(true);
     axios
-      .get(url)
+      .get(url, {timeout: 15000})
       .then(function (response) {
         setPriceData(response.data.prices);
         setTotalVolumes(response.data.total_volumes);

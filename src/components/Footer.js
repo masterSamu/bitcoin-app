@@ -11,12 +11,14 @@ export default function Footer() {
 }
 
 const containerStyle = {
+    maxWidth: "700px",
+    minWidth: "260px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     marginTop: 20,
     marginBottom: 20,
-    textAlign: "center"
+    textAlign: "center",
 }
 
 const spanElementStyle = {
