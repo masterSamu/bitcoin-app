@@ -102,11 +102,10 @@ export const extractHighestVolume = (data) => {
     const isSameDate = date.getUTCDate() === previousDate.getUTCDate();
 
     if (tempVolume > highestVolume && !isSameDate) {
-      console.log(tempVolume)
       highestVolume = tempVolume;
       highestVolumeObject = {
         date: DateFunctions.convertDateToString(date),
-        volume: tempVolume.toFixed(2),
+        volume: tempVolume.toFixed(0),
       };
     }
     previousDate = date;

@@ -60,7 +60,7 @@ export default function DateSelection(props) {
                   <LoadingButton text="Loading" />
                 ) : (
                   <Button type="submit" variant="secondary" style={btnStyle}>
-                    Refresh
+                    Load
                   </Button>
                 )}
               </Col>

@@ -5,8 +5,10 @@ import Card from "react-bootstrap/Card";
 export default function TwoValueCard(props) {
   const title = props.title;
   const date = props.date;
-  const currency = props.currency;
-  const value = props.value;
+  const value1 = props.value1;
+  const value2 = props.value2;
+  const value3 = props.value3;
+  const label1 = props.label1;
   const label2 = props.label2;
 
   return (
@@ -17,15 +19,18 @@ export default function TwoValueCard(props) {
       <Card.Body>
           <Container style={cardTextContainerStyle}>
             <span style={labelStyle}>
-              Date:
+              {label1}
             </span>
-            <span>{date}</span>
+            <span>{value1}</span>
           </Container>
           <Container style={cardTextContainerStyle}>
             <span style={labelStyle}>
-                {label2}:
+                {label2}
             </span>
-            <span>{value} {currency}</span>
+            <Container style={value3.length > 3 ? value3IsLongerThan3 : value3IsShorterThan4}>
+              <span style={{marginRight: 10}}>{value2}</span>
+              <span>{value3}</span>
+            </Container>
           </Container>
       </Card.Body>
     </Card>
@@ -60,5 +65,19 @@ const cardTextContainerStyle = {
 
 const labelStyle = {
   fontSize: "1.2rem",
-    marginRight: "1rem"
+  marginRight: "1rem"
+}
+
+const value3IsShorterThan4 = {
+  display: "flex",
+  justifyContent: "flex-end",
+  padding: 0,
+}
+
+const value3IsLongerThan3 = {
+  display: "flex",
+  justifyContent: "flex-end",
+  flexDirection: "column",
+  padding: 0,
+  
 }

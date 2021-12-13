@@ -45,7 +45,6 @@ function App() {
         setDownloadError(false);
       })
       .catch(function (error) {
-        console.log(error);
         setDownloadError(true);
       })
       .then(function () {
@@ -86,6 +85,7 @@ function App() {
                     endDate={endDate}
                     currency={currency}
                     totalVolumes={totalVolumes}
+                    cryptoCurrency={cryptoCurrency}
                   />
                 )}
               </>

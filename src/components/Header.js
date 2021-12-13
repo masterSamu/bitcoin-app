@@ -9,7 +9,7 @@ export default function Header() {
     return (
         <Container style={containerStyle}>
             <Image src={logo} style={iconImageStyle} fluid rounded />
-            <h1>Scroog's crypto</h1>
+            <h1 style={h1Style}>McDuck's coin tool</h1>
         </Container>
     )
 }
@@ -30,4 +30,8 @@ const iconImageStyle = {
     width: "100px",
     height: "100px",
     marginRight: 30
+}
+
+const h1Style = {
+    fontSize: "5vw",
 }
