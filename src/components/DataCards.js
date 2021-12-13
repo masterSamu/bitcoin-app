@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import * as priceFunctions from "../functions/PriceFunctions";
-import TwoValueCard from "./TwoValueCard";
 
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
@@ -77,7 +76,7 @@ export default function DataCards(props) {
 
         <hr></hr>
         <Row>
-          <h3>Best buying price</h3>
+          <h3>Best buying point</h3>
           <Col style={labelColStyle}>
             <label style={labelStyle}>Date</label>
           </Col>
@@ -99,12 +98,12 @@ export default function DataCards(props) {
 
         <hr></hr>
         <Row>
-          <h3>Best selling price</h3>
+          <h3>Best selling point</h3>
           <Col style={labelColStyle}>
             <label style={labelStyle}>Date</label>
           </Col>
           <Col style={valueColStyle}>
-            <span style={labelStyle}>{lowestPrice.date}</span>
+            <span style={labelStyle}>{highestPrice.date}</span>
           </Col>
         </Row>
 
@@ -114,7 +113,7 @@ export default function DataCards(props) {
           </Col>
           <Col style={valueColStyle}>
             <span style={labelStyle}>
-              {lowestPrice.price} {currency}
+              {highestPrice.price} {currency}
             </span>
           </Col>
         </Row>
