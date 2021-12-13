@@ -33,7 +33,8 @@ function App() {
   const downlaodHistoricalData = () => {
     let fromDate = DateFunctions.convertDateToUnixTimestamp(startDate);
     let toDate = DateFunctions.convertDateToUnixTimestamp(endDate) + 3600; //3600 = 1hour
-    let url = `https://api.coingecko.com/api/v3/coins/${cryptoCurrency}/market_chart/range?vs_currency=${currency}&from=${fromDate}&to=${toDate}`;
+    let crypto = cryptoCurrency.toLowerCase();
+    let url = `https://api.coingecko.com/api/v3/coins/${crypto}/market_chart/range?vs_currency=${currency}&from=${fromDate}&to=${toDate}`;
 
     const axios = require("axios");
     setDownloadingData(true);
