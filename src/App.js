@@ -6,7 +6,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 
-import DataCards from "./components/DataCards";
+import DataCard from "./components/DataCard";
 import DateSelection from "./components/DateSelection";
 import ErrorCard from "./components/ErrorCard";
 import Footer from "./components/Footer";
@@ -80,7 +80,7 @@ function App() {
                     text="Could not download the data, try again later."
                   />
                 ) : (
-                  <DataCards
+                  <DataCard
                     priceData={priceData}
                     startDate={startDate}
                     endDate={endDate}

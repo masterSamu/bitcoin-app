@@ -132,7 +132,7 @@ export default function DataCards(props) {
             <label style={labelStyle}>Volume</label>
           </Col>
           <Col style={valueColStyle}>
-            <span>
+            <span style={labelStyle}>
               {highestVolume.volume} {currency}
             </span>
           </Col>
@@ -160,15 +160,6 @@ const cardHeaderStyle = {
   color: "#FFFFFF",
 };
 
-const cardTextContainerStyle = {
-  padding: 0,
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginBottom: 5,
-  fontSize: "1.2rem",
-};
-
 const labelStyle = {
   fontSize: "1.2rem",
   marginRight: "1rem",
@@ -186,4 +177,5 @@ const labelColStyle = {
 const valueColStyle = {
   display: "flex",
   justifyContent: "flex-end",
+  padding: 0
 };

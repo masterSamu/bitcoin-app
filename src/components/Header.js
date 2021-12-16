@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 export default function Header() {
     return (
         <Container style={containerStyle}>
-            <Image src={logo} style={iconImageStyle} fluid rounded />
+            <Image src={logo} style={iconImageStyle} fluid />
             <h1 style={h1Style}>McDuck's coin tool</h1>
         </Container>
     )
@@ -23,13 +23,15 @@ const containerStyle = {
     alignItems: "center",
     marginBottom: 25,
     marginTop: 15,
+    borderRadius: 20,
 }
 
 const iconImageStyle = {
-    backgroundColor: "#FFF",
+    backgroundColor: "#FFFFFF",
     width: "100px",
     height: "100px",
-    marginRight: 30
+    marginRight: 30,
+    borderRadius: 20,
 }
 
 const h1Style = {
