@@ -19,20 +19,22 @@ export const convertDateToUnixTimestamp = (date) => {
 };
 
 /**
- * Get todays date as a String.
- * @returns String "yyy-MM-dd"
- */
-export const getToday = () => {
-  return convertDateToString(new Date())
-};
-
-/**
  * Get yesterdays date as a String.
  * @returns String "yyy-MM-dd"
  */
 export const getYesterday = () => {
   let today = new Date();
   today.setDate(today.getUTCDate() -1)
+  return convertDateToString(today)
+};
+
+/**
+ * Get day before yesterday as a String.
+ * @returns String "yyy-MM-dd"
+ */
+ export const getDayBeforeYesterday = () => {
+  let today = new Date();
+  today.setDate(today.getUTCDate() -2)
   return convertDateToString(today)
 };
 

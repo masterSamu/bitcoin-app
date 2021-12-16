@@ -4,7 +4,7 @@ import * as DateFunctions from "../functions/DateFunctions";
  * Extracts decreasing ("bearish") dates in row from array and return
  * longest decreasing dates data.
  * @param {array} data
- * @returns array
+ * @returns array[{date: String, price: double}]
  */
 export const getMostDecreasingDatesInRow = (data) => {
   let datesInRow = [];
@@ -42,6 +42,11 @@ export const getMostDecreasingDatesInRow = (data) => {
   return datesInRow;
 }
 
+/**
+ * 
+ * @param {array} data 
+ * @returns object {price: double, date: String}
+ */
 export const getBestBuyingDate = (data) => {
   let lowestPrice;
   let date = new Date(0);
@@ -67,6 +72,10 @@ export const getBestBuyingDate = (data) => {
   return bestBuyingDateObject;
 };
 
+/**
+ * @param {array} data 
+ * @returns object {price: double, date: String}
+ */
 export const getBestSellingDate = (data) => {
   let highestPrice = 0;
   let date = new Date(0);
@@ -91,6 +100,11 @@ export const getBestSellingDate = (data) => {
   return bestSellingDateObject;
 };
 
+/**
+ * 
+ * @param {array} data 
+ * @returns object {date: String, volume: int}
+ */
 export const extractHighestVolume = (data) => {
   let highestVolumeObject = {};
   let previousDate = new Date(0);
@@ -102,11 +116,10 @@ export const extractHighestVolume = (data) => {
     const isSameDate = date.getUTCDate() === previousDate.getUTCDate();
 
     if (tempVolume > highestVolume && !isSameDate) {
-      console.log(tempVolume)
       highestVolume = tempVolume;
       highestVolumeObject = {
         date: DateFunctions.convertDateToString(date),
-        volume: tempVolume.toFixed(2),
+        volume: tempVolume.toFixed(0),
       };
     }
     previousDate = date;

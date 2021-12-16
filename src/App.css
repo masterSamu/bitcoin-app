@@ -1,16 +1,31 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css");
 
 html {
-    background-color: #FFF8CD;
+    background-color: #FFFFFF;
 }
 
 main {
-    max-width: 1350px;
+    max-width: 1000px;
+    min-height: 85vh;
     margin: 0 auto;
-    margin-top: 25px;
-    background-color: #FFF8CD;
+    box-shadow: 0 0 10rem rgba(8, 8, 8, 0.65);
 }
 
 #root {
-    background-color: #FFF8CD;
+    background-color: #FFFFFF;
+    background-image: url("./images/bg-abstract.jpg");
+    background-size: cover;
+    background-position-x: center;
+}
+
+:focus {
+    border-width: 3 !important;
+    border-color: #000000 !important;
+    color: #000000 !important;
+    box-shadow:  0 0 8px rgba(0, 0, 0, 1) !important;
+}
+
+.row {
+    display: flex !important;
+    justify-content: center !important;
 }
