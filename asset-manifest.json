@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/bitcoin-app/static/css/main.33518fd1.chunk.css",
+    "main.js": "/bitcoin-app/static/js/main.38e749ae.chunk.js",
+    "main.js.map": "/bitcoin-app/static/js/main.38e749ae.chunk.js.map",
+    "runtime-main.js": "/bitcoin-app/static/js/runtime-main.e8c30816.js",
+    "runtime-main.js.map": "/bitcoin-app/static/js/runtime-main.e8c30816.js.map",
+    "static/css/2.383c0125.chunk.css": "/bitcoin-app/static/css/2.383c0125.chunk.css",
+    "static/js/2.3be53948.chunk.js": "/bitcoin-app/static/js/2.3be53948.chunk.js",
+    "static/js/2.3be53948.chunk.js.map": "/bitcoin-app/static/js/2.3be53948.chunk.js.map",
+    "static/js/3.4bd13918.chunk.js": "/bitcoin-app/static/js/3.4bd13918.chunk.js",
+    "static/js/3.4bd13918.chunk.js.map": "/bitcoin-app/static/js/3.4bd13918.chunk.js.map",
+    "index.html": "/bitcoin-app/index.html",
+    "static/css/2.383c0125.chunk.css.map": "/bitcoin-app/static/css/2.383c0125.chunk.css.map",
+    "static/css/main.33518fd1.chunk.css.map": "/bitcoin-app/static/css/main.33518fd1.chunk.css.map",
+    "static/js/2.3be53948.chunk.js.LICENSE.txt": "/bitcoin-app/static/js/2.3be53948.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/bitcoin-app/static/media/bg-abstract.026ed486.jpg",
+    "static/media/icon-duck.9a67c12c.png": "/bitcoin-app/static/media/icon-duck.9a67c12c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e8c30816.js",
+    "static/css/2.383c0125.chunk.css",
+    "static/js/2.3be53948.chunk.js",
+    "static/css/main.33518fd1.chunk.css",
+    "static/js/main.38e749ae.chunk.js"
+  ]
+}
