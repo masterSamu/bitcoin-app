@@ -137,6 +137,9 @@ export default function DataCards(props) {
             </span>
           </Col>
         </Row>
+        <Row style={{textAlign: "center", fontSize: "0.7rem"}}>
+          <p>Data is provided by <a href="https://www.coingecko.com/en/api">CoinGecko</a></p>
+        </Row>
       </Card.Body>
     </Card>
   );
