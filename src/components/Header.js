@@ -9,7 +9,7 @@ export default function Header() {
     return (
         <Container style={containerStyle}>
             <Image src={logo} style={iconImageStyle} fluid />
-            <h1 style={h1Style}>McDuck's coin tool</h1>
+            <h1 style={h1Style}>Coin Tool</h1>
         </Container>
     )
 }
